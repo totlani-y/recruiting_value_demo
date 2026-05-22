@@ -1,0 +1,155 @@
+{
+  "req_id": "POSTMAN_6340592003",
+  "job_title": "Account Development Representative",
+  "ranking_method": "Estimated expected annual business value",
+  "shortlist_summary": {
+    "candidates_screened": 6,
+    "shortlisted_candidates": 1,
+    "not_shortlisted": 5,
+    "human_review_required": true
+  },
+  "shortlisted_candidates": [
+    {
+      "rank": 1,
+      "lead_id": "lead_001",
+      "candidate_name": "Christopher Dias Taconi",
+      "possible_title": "ADR",
+      "possible_company": "Udemy",
+      "source_url": "https://www.linkedin.com/in/cdtaconi",
+      "estimated_expected_annual_value_usd": {
+        "low": 300000,
+        "base": 500000,
+        "high": 700000
+      },
+      "value_rationale": "Christopher has generated over $4.3M in pipeline with an 85% lead qualification rate, which indicates a high ability to identify and engage high-fit prospects. This aligns strongly with the need for creating strategic pipeline as stated in the role's value model. His experience with Enterprise SaaS further enhances his relevance, suggesting he can quickly learn and apply Postman's API offerings effectively.",
+      "evidence_used": [
+        "$4.3M+ Pipeline Generated",
+        "85% Lead Qualification Rate",
+        "Experience in Enterprise SaaS"
+      ],
+      "job_requirement_match": {
+        "matched_must_haves": [
+          "6 months to 2 years of business development, sales, SDR, ADR, BDR, or related experience",
+          "lead qualification experience",
+          "prospecting and outbound engagement",
+          "CRM hygiene and daily activity updates",
+          "ability to work in a high-energy, fast-paced sales environment"
+        ],
+        "matched_nice_to_haves": [],
+        "missing_or_unclear": [
+          "Familiarity with specific tools like Salesforce, ZoomInfo which could enhance lead engagement."
+        ]
+      },
+      "market_rate_context": "Christopher's expected annual value suggests he can significantly impact the company's top line, exceeding typical OTE ranges due to prior success in driving pipeline and lead qualification.",
+      "why_shortlisted": "His strong track record in building pipeline, combined with excellent lead qualification metrics, aligns perfectly with the strategic goals of the ADR role, justifying the higher expected annual value. His evidence supports high potential for success within this role.",
+      "human_review_required": true
+    }
+  ],
+  "not_shortlisted_for_this_req": [
+    {
+      "lead_id": "lead_002",
+      "candidate_name": "Anthony Hurtado",
+      "possible_title": "Account Development Representative",
+      "possible_company": "ChurNO",
+      "source_url": "https://www.linkedin.com/in/anthonyhurtado",
+      "estimated_expected_annual_value_usd": {
+        "low": 75000,
+        "base": 100000,
+        "high": 150000
+      },
+      "reason_not_shortlisted": "Limited evidence of specific achievements or metrics related to lead generation and qualification that would demonstrate high expected annual value.",
+      "evidence_used": [
+        "Experience: ChurNO · Location: San Francisco · Enabling your SaaS scaling"
+      ],
+      "missing_or_unclear": [
+        "No direct mention of lead qualification success or pipeline generation metrics."
+      ],
+      "human_review_required": true
+    },
+    {
+      "lead_id": "lead_003",
+      "candidate_name": "Wendy Kwan",
+      "possible_title": "Business Development",
+      "possible_company": "Salesforce",
+      "source_url": "https://www.linkedin.com/in/wendy-kwan-1b92706",
+      "estimated_expected_annual_value_usd": {
+        "low": 75000,
+        "base": 100000,
+        "high": 150000
+      },
+      "reason_not_shortlisted": "Limited timeframe (only 4 months) in the mentioned role which does not meet the experience requirement adequately to warrant a higher value.",
+      "evidence_used": [
+        "Account Development Representative. Postman. Jul 2025 - Oct 2025 4 months"
+      ],
+      "missing_or_unclear": [
+        "Unclear impact or success in the short time at Postman."
+      ],
+      "human_review_required": true
+    },
+    {
+      "lead_id": "lead_004",
+      "candidate_name": "Evan Look",
+      "possible_title": "Account Development Representative",
+      "possible_company": "Auth0",
+      "source_url": "https://www.linkedin.com/in/evan-look-6088baaa",
+      "estimated_expected_annual_value_usd": {
+        "low": 75000,
+        "base": 100000,
+        "high": 150000
+      },
+      "reason_not_shortlisted": "No detailed metrics or achievements provided to assess potential impact in a sales development context.",
+      "evidence_used": [
+        "Account Development Representative at Auth0"
+      ],
+      "missing_or_unclear": [
+        "Lacks quantifiable results or extensive experience relevant to the role."
+      ],
+      "human_review_required": true
+    },
+    {
+      "lead_id": "lead_005",
+      "candidate_name": "Jackson Somerhalder",
+      "possible_title": "Account Development Representative II (Outbound)",
+      "possible_company": "Samsara",
+      "source_url": "https://www.linkedin.com/in/jackson-somerhalder-2a463a185",
+      "estimated_expected_annual_value_usd": {
+        "low": 75000,
+        "base": 100000,
+        "high": 150000
+      },
+      "reason_not_shortlisted": "Describes B2B SaaS sales experience but lacks specific metrics or proven impact related to lead qualification or pipeline creation.",
+      "evidence_used": [
+        "B2B SaaS Sales | SCU Leavey School of Business"
+      ],
+      "missing_or_unclear": [
+        "No clear demonstration of relevant sales metrics or lead success."
+      ],
+      "human_review_required": true
+    },
+    {
+      "lead_id": "lead_006",
+      "candidate_name": "Ramzi Kawar",
+      "possible_title": "Global Head of ADR",
+      "possible_company": "Postman",
+      "source_url": "https://www.linkedin.com/in/ramzi-kawar",
+      "estimated_expected_annual_value_usd": {
+        "low": 75000,
+        "base": 100000,
+        "high": 150000
+      },
+      "reason_not_shortlisted": "Role suggests higher-level responsibilities potentially misaligned with the ADR position, which could lead to overqualification.",
+      "evidence_used": [
+        "Postman's ADR org is the revenue pipeline generating heart of the company"
+      ],
+      "missing_or_unclear": [
+        "Not focused on the specific entry-level requirements of this role."
+      ],
+      "human_review_required": true
+    }
+  ],
+  "screening_notes": [
+    "This is a sourcing shortlist, not a final hiring decision.",
+    "Dollar values are directional estimates based on public evidence, job requirements, role value drivers, and market-rate context.",
+    "All candidates require recruiter validation before outreach or decisioning."
+  ]
+}

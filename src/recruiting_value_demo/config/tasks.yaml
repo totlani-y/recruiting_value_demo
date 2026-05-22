@@ -1,0 +1,200 @@
+source_candidates_task:
+  description: >
+    You are the Talent Sourcing Agent.
+
+    You are given a mocked output from the Job Req Agent:
+
+    Req ID: {req_id}
+    Job title: {job_title}
+    Location: {location}
+    Must-haves: {must_haves}
+    Nice-to-haves: {nice_to_haves}
+    Approved search queries: {approved_search_queries}
+
+    Your job is to execute only the approved search queries using Serper.
+
+    Do not create a new sourcing strategy.
+    Do not rewrite the job req.
+    Do not rank candidates.
+    Do not estimate candidate value.
+    Do not invent candidate details.
+
+    Search public web results and return candidate-like leads that appear relevant
+    to the role.
+
+    For each lead, capture only public, job-relevant evidence:
+    - candidate name, if available
+    - possible current or recent title
+    - possible company
+    - source URL
+    - source type, such as LinkedIn profile, portfolio, article, GitHub, personal site, conference page, or other public professional source
+    - query used
+    - evidence snippet
+    - matched job-relevant terms
+    - uncertainty notes
+
+    Avoid protected characteristics and personal attributes. Do not infer age,
+    gender, race, ethnicity, religion, disability, marital status, family status,
+    political views, or health information.
+
+  expected_output: >
+    Return a valid JSON object with this structure:
+
+    {
+      "req_id": "...",
+      "job_title": "...",
+      "search_queries_used": [
+        "..."
+      ],
+      "raw_candidate_leads": [
+        {
+          "lead_id": "lead_001",
+          "candidate_name": "...",
+          "possible_title": "...",
+          "possible_company": "...",
+          "source_url": "...",
+          "source_type": "...",
+          "query_used": "...",
+          "evidence_snippet": "...",
+          "matched_terms": [
+            "..."
+          ],
+          "uncertainty_notes": [
+            "..."
+          ]
+        }
+      ],
+      "sourcing_audit": {
+        "tool_used": "SerperDevTool",
+        "total_queries_run": 0,
+        "raw_results_reviewed": 0,
+        "candidate_like_leads_found": 0
+      }
+    }
+
+  agent: talent_sourcing_agent
+
+
+screen_value_and_shortlist_task:
+  description: >
+    You are the Screening Agent.
+
+    You will receive raw candidate leads from the Talent Sourcing Agent.
+
+    Your job is to screen those leads against the approved job req and produce
+    a value-based shortlist.
+
+    Use the following job context:
+
+    Req ID: {req_id}
+    Job title: {job_title}
+    Location: {location}
+    Must-haves: {must_haves}
+    Nice-to-haves: {nice_to_haves}
+    Role value model: {role_value_model}
+    Market rate context: {market_rate_context}
+
+    Evaluate each candidate lead using:
+    - public candidate history and evidence from the sourcing output
+    - the job description and must-have requirements
+    - the role value model
+    - market rate context
+    - the strength and relevance of the evidence
+    - missing or uncertain information
+
+    Estimate each candidate's expected annual value to the company in dollars.
+    The estimate should be directional, not exact.
+
+    The dollar estimate must be substantiated with a clear verbal explanation.
+    Explain why the candidate may create that level of value for this specific role.
+    Tie the explanation back to candidate evidence, job requirements, business value
+    drivers, and market-rate context.
+
+    Shortlist the strongest candidates based on expected business value and evidence
+    quality. Place weaker or poorly supported leads into not_shortlisted_for_this_req.
+
+    Do not use arbitrary point scores.
+    Do not use a generic confidence multiplier.
+    Do not invent accomplishments, employers, metrics, or compensation data.
+    Do not infer protected characteristics.
+    Do not make final hiring decisions.
+
+    Every candidate must be marked human_review_required=true.
+
+  expected_output: >
+    Return a valid JSON object with this structure:
+
+    {
+      "req_id": "...",
+      "job_title": "...",
+      "ranking_method": "Estimated expected annual business value",
+      "shortlist_summary": {
+        "candidates_screened": 0,
+        "shortlisted_candidates": 0,
+        "not_shortlisted": 0,
+        "human_review_required": true
+      },
+      "shortlisted_candidates": [
+        {
+          "rank": 1,
+          "lead_id": "lead_001",
+          "candidate_name": "...",
+          "possible_title": "...",
+          "possible_company": "...",
+          "source_url": "...",
+          "estimated_expected_annual_value_usd": {
+            "low": 0,
+            "base": 0,
+            "high": 0
+          },
+          "value_rationale": "...",
+          "evidence_used": [
+            "..."
+          ],
+          "job_requirement_match": {
+            "matched_must_haves": [
+              "..."
+            ],
+            "matched_nice_to_haves": [
+              "..."
+            ],
+            "missing_or_unclear": [
+              "..."
+            ]
+          },
+          "market_rate_context": "...",
+          "why_shortlisted": "...",
+          "human_review_required": true
+        }
+      ],
+      "not_shortlisted_for_this_req": [
+        {
+          "lead_id": "lead_004",
+          "candidate_name": "...",
+          "possible_title": "...",
+          "possible_company": "...",
+          "source_url": "...",
+          "estimated_expected_annual_value_usd": {
+            "low": 0,
+            "base": 0,
+            "high": 0
+          },
+          "reason_not_shortlisted": "...",
+          "evidence_used": [
+            "..."
+          ],
+          "missing_or_unclear": [
+            "..."
+          ],
+          "human_review_required": true
+        }
+      ],
+      "screening_notes": [
+        "This is a sourcing shortlist, not a final hiring decision.",
+        "Dollar values are directional estimates based on public evidence, job requirements, role value drivers, and market-rate context.",
+        "All candidates require recruiter validation before outreach or decisioning."
+      ]
+    }
+
+  agent: screening_agent
+  output_file: output/sourcing_value_shortlist.json

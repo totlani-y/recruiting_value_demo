@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sourcing Shortlist — POSTMAN_6340592003</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f5f5f3;
+    color: #1a1a18;
+    padding: 2rem 1rem;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .page { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
+  .meta { font-size: 12px; color: #666; margin-bottom: 1.5rem; }
+  .section-label {
+    font-size: 10px; font-weight: 500; letter-spacing: .07em;
+    text-transform: uppercase; color: #888; margin: 0 0 10px;
+  }
+  /* Summary cards */
+  .summary-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 2rem; }
+  .metric { background: #fff; border: 0.5px solid #e0e0da; border-radius: 10px; padding: 14px 16px; }
+  .metric-val { font-size: 26px; font-weight: 500; line-height: 1.1; margin-bottom: 2px; }
+  .metric-lbl { font-size: 11px; color: #888; }
+  .v-blue { color: #185FA5; } .v-green { color: #3B6D11; }
+  .v-coral { color: #993C1D; } .v-amber { color: #854F0B; }
+  /* Candidate cards */
+  .card {
+    background: #fff; border: 0.5px solid #e0e0da; border-radius: 12px;
+    padding: 1rem 1.25rem; margin-bottom: 10px;
+  }
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-weight: 500;
+    font-size: 13px; flex-shrink: 0;
+  }
+  .av-0 { background: #E6F1FB; color: #0C447C; }
+  .av-1 { background: #EAF3DE; color: #27500A; }
+  .av-2 { background: #FAEEDA; color: #633806; }
+  .av-3 { background: #FBEAF0; color: #72243E; }
+  .av-4 { background: #E1F5EE; color: #085041; }
+  .cname { font-size: 15px; font-weight: 500; margin: 0 0 2px; }
+  .ctitle { font-size: 12px; color: #888; margin: 0; }
+  .rank-badge {
+    font-size: 11px; font-weight: 500; padding: 3px 10px;
+    border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+  }
+  .rank-0 { background: #E6F1FB; color: #185FA5; }
+  .rank-1 { background: #EAF3DE; color: #3B6D11; }
+  .rank-2 { background: #FAEEDA; color: #854F0B; }
+  /* Value bar */
+  .bar-section { margin-bottom: 10px; }
+  .bar-label { display: flex; justify-content: space-between; font-size: 12px; color: #888; margin-bottom: 4px; }
+  .bar-track { height: 8px; background: #f0f0ec; border-radius: 4px; position: relative; overflow: hidden; }
+  .bar-high { height: 100%; position: absolute; top: 0; left: 0; border-radius: 4px; opacity: .35; }
+  .bar-base { height: 100%; position: absolute; top: 0; left: 0; border-radius: 4px; }
+  .bar-colors-0 { background: #378ADD; } .bar-colors-0-light { background: #B5D4F4; }
+  .bar-colors-1 { background: #639922; } .bar-colors-1-light { background: #C0DD97; }
+  .bar-colors-2 { background: #BA7517; } .bar-colors-2-light { background: #FAC775; }
+  /* Tags */
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+  .tag {
+    font-size: 11px; padding: 3px 9px; border-radius: 20px;
+    background: #f5f5f3; color: #555; border: 0.5px solid #e0e0da;
+  }
+  .tag.matched { background: #EAF3DE; color: #3B6D11; border-color: #C0DD97; }
+  /* Rationale */
+  .rationale {
+    font-size: 12px; color: #666; line-height: 1.6; margin-top: 8px;
+    padding-top: 8px; border-top: 0.5px solid #e8e8e4;
+  }
+  /* Not shortlisted */
+  .ns-card {
+    background: #fff; border: 0.5px solid #e0e0da; border-radius: 10px;
+    padding: .875rem 1rem; margin-bottom: 8px; display: flex;
+    gap: 12px; align-items: flex-start;
+  }
+  .ns-avatar {
+    width: 32px; height: 32px; border-radius: 50%; background: #f0f0ec;
+    color: #888; display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500; flex-shrink: 0;
+  }
+  .ns-name { font-size: 13px; font-weight: 500; margin: 0 0 3px; }
+  .ns-reason { font-size: 12px; color: #888; line-height: 1.5; margin: 0; }
+  .review-pill {
+    font-size: 11px; background: #FAECE7; color: #993C1D;
+    padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+  }
+  /* Notes */
+  .note-box { background: #fff; border: 0.5px solid #e0e0da; border-radius: 10px; padding: 12px 14px; margin-top: 1.5rem; }
+  .note-item { font-size: 12px; color: #888; padding: 2px 0; display: flex; gap: 8px; }
+  .note-item::before { content: "›"; color: #bbb; }
+  a { color: #185FA5; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  @media (max-width: 600px) {
+    .summary-row { grid-template-columns: repeat(2, 1fr); }
+    .card-top { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Account Development Representative</h1>
+  <p class="meta">Requisition <strong>POSTMAN_6340592003</strong> &nbsp;·&nbsp; Ranked by estimated expected annual business value</p>
+ 
+  <div class="section-label">Screening summary</div>
+  <div class="summary-row">
+    <div class="metric"><div class="metric-val">6</div><div class="metric-lbl">Candidates screened</div></div>
+    <div class="metric"><div class="metric-val v-blue">1</div><div class="metric-lbl">Shortlisted</div></div>
+    <div class="metric"><div class="metric-val v-coral">5</div><div class="metric-lbl">Not shortlisted</div></div>
+    <div class="metric"><div class="metric-val v-amber">⚠ Yes</div><div class="metric-lbl">Human review required</div></div>
+  </div>
+ 
+  <div class="section-label">Shortlisted candidates</div>
+  
+    <div class="card">
+      <div class="card-top">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="avatar av-0">CT</div>
+          <div>
+            <p class="cname"><a href="https://www.linkedin.com/in/cdtaconi" target="_blank">Christopher Dias Taconi</a></p>
+            <p class="ctitle">ADR</p>
+          </div>
+        </div>
+        <span class="rank-badge rank-0">#1 Ranked</span>
+      </div>
+      <div class="bar-section">
+        <div class="bar-label">
+          <span>Estimated annual value</span>
+          <span><strong>$300K – $700K</strong> &nbsp;<span style="font-weight:400;color:#aaa">(base $500K)</span></span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-high bar-colors-0-light" style="width:100%"></div>
+          <div class="bar-base bar-colors-0" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="tags"><span class="tag matched">6 months to 2 years of business development, sales, SDR, ADR, BDR, or related experience</span><span class="tag matched">lead qualification experience</span><span class="tag matched">prospecting and outbound engagement</span><span class="tag matched">CRM hygiene and daily activity updates</span><span class="tag matched">ability to work in a high-energy, fast-paced sales environment</span></div>
+      <p class="rationale">Christopher has generated over $4.3M in pipeline with an 85% lead qualification rate, which indicates a high ability to identify and engage high-fit prospects. This aligns strongly with the need for creating strategic pipeline as stated in the role's value model. His experience with Enterprise SaaS further enhances his relevance, suggesting he can quickly learn and apply Postman's API offerings effectively.</p>
+    </div>
+ 
+  <div class="section-label" style="margin-top:1.5rem">Not shortlisted — human review flagged</div>
+  
+    <div class="ns-card">
+      <div class="ns-avatar">AH</div>
+      <div style="flex:1;min-width:0">
+        <p class="ns-name">Anthony Hurtado <span style="font-size:11px;font-weight:400;color:#aaa">· Account Development Representative</span></p>
+        <p class="ns-reason">Limited evidence of specific achievements or metrics related to lead generation and qualification that would demonstrate high expected annual value.</p>
+      </div>
+      <span class="review-pill">⚠ Review</span>
+    </div>
+    <div class="ns-card">
+      <div class="ns-avatar">WK</div>
+      <div style="flex:1;min-width:0">
+        <p class="ns-name">Wendy Kwan <span style="font-size:11px;font-weight:400;color:#aaa">· Business Development</span></p>
+        <p class="ns-reason">Limited timeframe (only 4 months) in the mentioned role which does not meet the experience requirement adequately to warrant a higher value.</p>
+      </div>
+      <span class="review-pill">⚠ Review</span>
+    </div>
+    <div class="ns-card">
+      <div class="ns-avatar">EL</div>
+      <div style="flex:1;min-width:0">
+        <p class="ns-name">Evan Look <span style="font-size:11px;font-weight:400;color:#aaa">· Account Development Representative</span></p>
+        <p class="ns-reason">No detailed metrics or achievements provided to assess potential impact in a sales development context.</p>
+      </div>
+      <span class="review-pill">⚠ Review</span>
+    </div>
+    <div class="ns-card">
+      <div class="ns-avatar">JS</div>
+      <div style="flex:1;min-width:0">
+        <p class="ns-name">Jackson Somerhalder <span style="font-size:11px;font-weight:400;color:#aaa">· Account Development Representative II (Outbound)</span></p>
+        <p class="ns-reason">Describes B2B SaaS sales experience but lacks specific metrics or proven impact related to lead qualification or pipeline creation.</p>
+      </div>
+      <span class="review-pill">⚠ Review</span>
+    </div>
+    <div class="ns-card">
+      <div class="ns-avatar">RK</div>
+      <div style="flex:1;min-width:0">
+        <p class="ns-name">Ramzi Kawar <span style="font-size:11px;font-weight:400;color:#aaa">· Global Head of ADR</span></p>
+        <p class="ns-reason">Role suggests higher-level responsibilities potentially misaligned with the ADR position, which could lead to overqualification.</p>
+      </div>
+      <span class="review-pill">⚠ Review</span>
+    </div>
+ 
+  <div class="note-box">
+    <div class="section-label" style="margin-bottom:8px">Screening notes</div>
+    <div class="note-item">This is a sourcing shortlist, not a final hiring decision.</div><div class="note-item">Dollar values are directional estimates based on public evidence, job requirements, role value drivers, and market-rate context.</div><div class="note-item">All candidates require recruiter validation before outreach or decisioning.</div>
+  </div>
+</div>
+</body>
+</html>
